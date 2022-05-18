@@ -5,8 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class SpringBootExApplication {
@@ -28,12 +30,14 @@ public class SpringBootExApplication {
 //		Create a static method that returns all the books as a list collection
 
 		System.out.println("1)\tList of all the books : ");
+
 		printBooks(bookList);
 
 		System.out.println();
 //		Find all the books based on category filter value  e.g Science, Maths, Engineering, technology
 
 		System.out.println("2)\tBooks based on category filter : ");
+
 		System.out.println("\nScience books : ");
 		bookList.stream().filter(p -> p.getBookCategory().equals("Science")).forEach(System.out::println);
 
@@ -59,21 +63,35 @@ public class SpringBootExApplication {
 		System.out.println("\nBooks of Gaurav : ");
 		bookList.stream().filter(p -> p.getBookAuthor().equals("Gaurav")).forEach(System.out::println);
 
+		System.out.println();
 //		Find count of all the books based on Category (hint using lambda and grouping)
 
-		long countScience = bookList.stream().filter(p -> p.getBookCategory().equals("Science")).count();
-		long countEngineering = bookList.stream().filter(p -> p.getBookCategory().equals("Engineering")).count();
-		long countMaths = bookList.stream().filter(p -> p.getBookCategory().equals("Maths")).count();
-		long countTechnology = bookList.stream().filter(p -> p.getBookCategory().equals("Technology")).count();
-		System.out.println("\n4)\tCount of all the books based on Category :\n" +
-				"Science \t\t:\t " + countScience + "\n" +
-				"Engineering \t:\t " + countEngineering + "\n" +
-				"Maths \t\t\t:\t " + countMaths + "\n" +
-				"Technology \t\t:\t " + countTechnology);
+//		long countScience = bookList.stream().filter(p -> p.getBookCategory().equals("Science")).count();
+//		long countEngineering = bookList.stream().filter(p -> p.getBookCategory().equals("Engineering")).count();
+//		long countMaths = bookList.stream().filter(p -> p.getBookCategory().equals("Maths")).count();
+//		long countTechnology = bookList.stream().filter(p -> p.getBookCategory().equals("Technology")).count();
+//		System.out.println("\n4)\tCount of all the books based on Category :\n" +
+//				"Science \t\t:\t " + countScience + "\n" +
+//				"Engineering \t:\t " + countEngineering + "\n" +
+//				"Maths \t\t\t:\t " + countMaths + "\n" +
+//				"Technology \t\t:\t " + countTechnology);
+
+		System.out.println("4)\tCount of all the books based on Category : ");
+//		Map<String, List<Book>> map = bookList.stream().collect(Collectors.groupingBy(Book::getBookCategory));
+		Map<String, Long> countBooks = bookList.stream().map(p -> p.getBookCategory()).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+//		System.out.println(countBooks);
+		countBooks.forEach((category, count) -> System.out.println(category +" : " +count));
+
+//		forEach(new Consumer<Book>() {
+//			@Override
+//			public void accept(Book x) {
+//				System.out.println(x);
+//			}
+//		})
 	}
 
 	public static void printBooks(List<Book> list){
-		list.stream().forEach(System.out::println);
+		list.forEach(System.out::println);
 	}
 
 }

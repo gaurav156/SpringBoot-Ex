@@ -2,12 +2,12 @@ package com.springboot.ex.SpringBootEx.book;
 
 public class Book {
     private String bookCategory;
-    private String bookTtile;
+    private String bookTitle;
     private String bookAuthor;
 
-    public Book(String bookCategory, String bookTtile, String bookAuthor) {
+    public Book(String bookCategory, String bookTitle, String bookAuthor) {
         this.bookCategory = bookCategory;
-        this.bookTtile = bookTtile;
+        this.bookTitle = bookTitle;
         this.bookAuthor = bookAuthor;
     }
 
@@ -19,12 +19,12 @@ public class Book {
         this.bookCategory = bookCategory;
     }
 
-    public String getBookTtile() {
-        return bookTtile;
+    public String getBookTitle() {
+        return bookTitle;
     }
 
-    public void setBookTtile(String bookTtile) {
-        this.bookTtile = bookTtile;
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
     }
 
     public String getBookAuthor() {
@@ -37,10 +37,15 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "bookCategory='" + bookCategory + '\'' +
-                ", bookTtile='" + bookTtile + '\'' +
-                ", bookAuthor='" + bookAuthor + '\'' +
-                '}';
+        return
+                "Category : '" + bookCategory + '\'' +
+                ", Title : '" + bookTitle + '\'' +
+                ", Author : '" + bookAuthor + '\'' ;
+
+//        return "Book{" +
+//                "bookCategory='" + bookCategory + '\'' +
+//                ", bookTitle='" + bookTitle + '\'' +
+//                ", bookAuthor='" + bookAuthor + '\'' +
+//                '}';
     }
 }
