@@ -55,40 +55,8 @@ public class BookManager {
         return getList().stream().map(p -> p.getBookCategory()).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
 
-
-    //    Calling Dynamic function
-
-    public static void dynamicCalling(){
-        Scanner s = new Scanner(System.in);
-
-//        Print All :
-        printBooks(getList());
-
-//        For Category :
-        System.out.println("Enter a Category : " );
-        String category = s.nextLine();
-
-        if(getList().stream().anyMatch(p -> p.getBookCategory().equals(category))){
-            printBooks(categoryFilter(category));
-        }
-        else {
-            System.out.println("Enter a valid Category");
-        }
-
-//        For Author :
-        System.out.println("Enter an Author : " );
-        String author = s.nextLine();
-
-        if(getList().stream().anyMatch(p -> p.getBookAuthor().equals(author))){
-            printBooks(authorFilter(author));
-        }
-        else {
-            System.out.println("Enter a valid Author");
-        }
-
-//        For Count :
-        printCount(categoryWiseCount());
+    public static Map<String, Long> categoryCount(String category){
+        return getList().stream().map(p -> p.getBookCategory()).filter(p -> Objects.equals(p, category)).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
-
 
 }
