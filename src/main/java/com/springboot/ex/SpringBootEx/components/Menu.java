@@ -9,8 +9,7 @@ import java.util.Scanner;
 @Component
 public class Menu {
 
-    @Autowired
-    private BookManager bookManager;
+    BookManager bookManager = new BookManager();
 
     public void BookMenu(){
         boolean exit = false;
@@ -27,7 +26,12 @@ public class Menu {
             switch (resMenu){
                 case 1: {
 //                    1)    View all Books
-                    BookManager.printBooks(BookManager.getList());
+                    try {
+                        bookManager.printBooks(bookManager.getList());
+                    }
+                    catch (Exception e){
+                        System.out.println("Error");
+                    }
                     boolean c1 = true;
                     while(c1) {
                     System.out.println("\nEnter a Choice : \n" +
@@ -55,8 +59,8 @@ public class Menu {
                         Scanner s2 = new Scanner(System.in);
                         String category = s2.nextLine();
                         System.out.println();
-                        if (BookManager.getList().stream().anyMatch(p -> p.getBookCategory().equals(category))) {
-                            BookManager.printBooks(BookManager.categoryFilter(category));
+                        if (bookManager.getList().stream().anyMatch(p -> p.getBookCategory().equals(category))) {
+                            bookManager.printBooks(bookManager.categoryFilter(category));
                             c2 = false;
                         } else {
                             System.out.println("Enter a valid Category : ");
@@ -94,8 +98,8 @@ public class Menu {
                         Scanner s3 = new Scanner(System.in);
                         String author = s3.nextLine();
                         System.out.println();
-                        if (BookManager.getList().stream().anyMatch(p -> p.getBookAuthor().equals(author))) {
-                            BookManager.printBooks(BookManager.authorFilter(author));
+                        if (bookManager.getList().stream().anyMatch(p -> p.getBookAuthor().equals(author))) {
+                            bookManager.printBooks(bookManager.authorFilter(author));
                             c3 = false;
                         } else {
                             System.out.println("Enter a valid Author : ");
@@ -133,8 +137,8 @@ public class Menu {
                         Scanner s4 = new Scanner(System.in);
                         String category = s4.nextLine();
                         System.out.println();
-                        if (BookManager.getList().stream().anyMatch(p -> p.getBookCategory().equals(category))) {
-                            BookManager.printCount(BookManager.categoryCount(category));
+                        if (bookManager.getList().stream().anyMatch(p -> p.getBookCategory().equals(category))) {
+                            bookManager.printCount(bookManager.categoryCount(category));
                             c4 = false;
                         } else {
                             System.out.println("\nEnter a valid Category :");
