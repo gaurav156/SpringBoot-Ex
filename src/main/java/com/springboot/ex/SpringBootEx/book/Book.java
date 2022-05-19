@@ -1,5 +1,7 @@
 package com.springboot.ex.SpringBootEx.book;
 
+import java.util.Objects;
+
 public class Book {
     private String bookCategory;
     private String bookTitle;
@@ -48,4 +50,18 @@ public class Book {
 //                ", bookAuthor='" + bookAuthor + '\'' +
 //                '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(bookCategory, book.bookCategory) && Objects.equals(bookTitle, book.bookTitle) && Objects.equals(bookAuthor, book.bookAuthor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookCategory, bookTitle, bookAuthor);
+    }
+
 }
