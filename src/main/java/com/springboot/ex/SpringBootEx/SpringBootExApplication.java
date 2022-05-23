@@ -1,9 +1,6 @@
 package com.springboot.ex.SpringBootEx;
 
-import com.springboot.ex.SpringBootEx.components.Menu;
-import com.springboot.ex.SpringBootEx.components.Prop;
-import com.springboot.ex.SpringBootEx.service.GetPropertiesUsingGetResource;
-import com.springboot.ex.SpringBootEx.service.ReadProperties;
+import com.springboot.ex.SpringBootEx.email.EmailPropsMenu;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -16,11 +13,14 @@ public class SpringBootExApplication {
 
 		SpringApplication.run(SpringBootExApplication.class, args);
 
-		Menu menu = new Menu();
-		menu.BookMenu();
+//		BookMenu menu = new BookMenu();
+//		menu.BookMenu();
 
-//		ReadProperties rp = new ReadProperties();
-//		rp.readPropertiesUsingResourceBundle();
+		EmailPropsMenu emailPropsMenu = new EmailPropsMenu();
+		emailPropsMenu.PropertiesMenu();
+
+//		GetPropertiesUsingGetResource gp = new GetPropertiesUsingGetResource();
+//        gp.readFile("src/main/resources/Application.properties");
 
 	}
 }

@@ -1,13 +1,12 @@
-package com.springboot.ex.SpringBootEx.components;
+package com.springboot.ex.SpringBootEx.book;
 
 import com.springboot.ex.SpringBootEx.book.BookManager;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
 @Component
-public class Menu {
+public class BookMenu {
 
     BookManager bookManager = new BookManager();
 
@@ -35,7 +34,7 @@ public class Menu {
                     boolean c1 = true;
                     while(c1) {
                     System.out.println("\nEnter a Choice : \n" +
-                            "1)\tBack to Main Menu\n" +
+                            "1)\tBack to Main BookMenu\n" +
                             "2)\tExit\n");
 
                     Scanner s1 = new Scanner(System.in);
@@ -69,7 +68,7 @@ public class Menu {
                     boolean c21 = true;
                     while(c21) {
                         System.out.println("\nEnter a Choice : \n" +
-                                "1)\tBack to Main Menu\n" +
+                                "1)\tBack to Main BookMenu\n" +
                                 "2)\tExit\n");
 
                         Scanner s21 = new Scanner(System.in);
@@ -108,7 +107,7 @@ public class Menu {
                     boolean c31 = true;
                     while(c31) {
                         System.out.println("\nEnter a Choice : \n" +
-                                "1)\tBack to Main Menu\n" +
+                                "1)\tBack to Main BookMenu\n" +
                                 "2)\tExit\n");
 
                         Scanner s21 = new Scanner(System.in);
@@ -147,7 +146,7 @@ public class Menu {
                     boolean c41 = true;
                     while(c41) {
                         System.out.println("\nEnter a Choice : \n" +
-                                "1)\tBack to Main Menu\n" +
+                                "1)\tBack to Main BookMenu\n" +
                                 "2)\tExit\n");
 
                         Scanner s41 = new Scanner(System.in);
